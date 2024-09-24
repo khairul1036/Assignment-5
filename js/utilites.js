@@ -6,7 +6,7 @@ function getDonateCardInputById(id){
 
 
 
-// all donation topic name or titile get by id
+// all donation topic name or title get by id
 function getDonateNameById(id){
     const donateName = document.getElementById(id).innerText;
     return donateName;
@@ -37,12 +37,15 @@ function donateCalculation(inputField, preBalance, donateName){
 //   clear input field 
   inputField.value = "";
 
+  // donation time Object 
+  const now = new Date();
+
   // add to transaction history
   const div = document.createElement('div');
   div.innerHTML = `
     <div class="border p-8 m-6 rounded-xl">
       <h2 class="text-xl font-bold primary-color mb-2">${inputValue} Taka is Donated for ${donateName}</h2>
-      <p class="secondary-color text-sm">Date : ${donationTime()} GMT +0600 (Bangladesh Standard Time)</p></div>
+      <p class="secondary-color text-sm">Date : ${now}</p></div>
   `
   document.getElementById('individual-donate-history').appendChild(div);
 
@@ -51,17 +54,6 @@ function donateCalculation(inputField, preBalance, donateName){
   modal.classList.remove('hidden');
   my_modal_5.showModal();
 }
-
-
-
-function donationTime(){
-    const now = new Date();
-    now.setHours(now.getHours() + 6);
-    const updatedDateTime = now.toLocaleString();
-
-    return updatedDateTime;
-}
-
 
 
 // show the selected section
